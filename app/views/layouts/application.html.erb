@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Airbnb" %></title>
+    <title><%= content_for(:title) || "Airbnb | Holiday rentals, cabins, beach houses and more" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <%= favicon_link_tag 'favicon.io.png' %>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -19,10 +21,15 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <%= render 'layouts/header'%>
+
       <%= yield %>
     
   </body>
