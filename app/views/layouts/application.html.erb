@@ -4,7 +4,7 @@
     <title><%= content_for(:title) || "Airbnb | Holiday rentals, cabins, beach houses and more" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <%= favicon_link_tag 'favicon.io.png' %>
+    <%= favicon_link_tag 'favicon.ico' %>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -28,9 +28,16 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
 
-      <%= render 'layouts/header'%>
+      <%if controller_name != 'registrations' && controller_name != 'sessions' %>
+         <%= render 'layouts/header'%> 
+      <% end %>
+
+      
 
       <%= yield %>
+
+      <script src=" https://cdn.tailwindcss.com "></script>]
+      
     
   </body>
 </html>
