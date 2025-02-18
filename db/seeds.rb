@@ -1,21 +1,13 @@
-Property.create!({
-  name: 'Sample Property',
-  description: 'lslwdwadwadslsl',
-  headline: 'lsdwlslsl',
-  address_1: 'lsdwlslsl',
-  address_2: 'lsdalslsl',
-  city: 'lslsldawdsl',
-  state: 'addawdwd',
-  country: 'lsdawdwlslsl'
+20.times do
+  Property.create!({
+    name: Faker::Lorem.unique.sentence(word_count: 3),
+    description: Faker::Lorem.paragraph(sentence_count: 2),
+    headline: Faker::Lorem.unique.sentence(word_count: 3),
+    address_1: Faker::Address.street_address,
+    address_2: Faker::Address.secondary_address,
+    city: Faker::Address.city,
+    state: Faker::Address.state,
+    country: Faker::Address.country,
+    price: Money.from_amount(rand(50..500), "USD")
 })
-
-Property.create!({
-  name: 'Sample Property 2',
-  description: 'erwfasdfal',
-  headline: 'lasdfeslsl',
-  address_1: 'fesff',
-  address_2: 'effsfEF',
-  city: 'lefsfefel',
-  state: 'afsefed',
-  country: 'lsefsfeslsl'
-})
+end

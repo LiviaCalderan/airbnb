@@ -61,5 +61,10 @@ gem "tailwindcss-ruby", "~> 4.0"
 gem "tailwindcss-rails", "~> 4.0"
 
 # User authentication
-
 gem "devise", "~> 4.9", ">= 4.9.3"
+
+# Faker -  library for generating fake data such as names, addresses, and phone numbers.
+gem "faker"
+
+# RubyMoney -  Lidar com valores monetários de forma precisa, evitando problemas comuns com operações de dinheiro usando números decimais (como arredondamentos incorretos).
+gem "money-rails", "~> 1.12"
