@@ -56,8 +56,8 @@ group :development do
   gem "web-console"
 end
 
+# tailwindCSS (front-end)
 gem "tailwindcss-ruby", "~> 4.0"
-
 gem "tailwindcss-rails", "~> 4.0"
 
 # User authentication
@@ -68,3 +68,6 @@ gem "faker"
 
 # RubyMoney -  Lidar com valores monetários de forma precisa, evitando problemas comuns com operações de dinheiro usando números decimais (como arredondamentos incorretos).
 gem "money-rails", "~> 1.12"
+
+# Active Storage
+gem "image_processing", ">= 1.2"
