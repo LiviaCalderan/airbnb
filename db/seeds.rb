@@ -18,7 +18,7 @@ user = User.create!({
 })
 
   property.images.attach(io: File.open(Rails.root.join("db", "images", "property_#{i + 1}.jpg")), filename: "property_#{i + 1}.jpg", content_type: "image/jpeg")
-  property.images.attach(io: File.open(Rails.root.join("db", "images", "property_#{i + 2}.jpg")), filename: "property_#{i + 2}.jpg", content_type: "image/jpeg")
+  property.images.attach(io: File.open(Rails.root.join("db", "images", "property_#{i + 7}.jpg")), filename: "property_#{i + 2}.jpg", content_type: "image/jpeg")
 
   (rand(5..10)).times do
     Review.create!({
