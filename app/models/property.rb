@@ -29,4 +29,24 @@ class Property < ApplicationRecord
 
     wishlisted_users.include?(user)
   end
+
+  def available_dates
+    next_reservation = reservations.upcoming_reservations.first
+    current_reservation = reservations.current_reservations.first
+
+
+    if current_reservation.nil? && next_reservation.nil?
+      # Caso 1: Sem reservas futuras ou atuais → Disponível nos próximos 30 dias
+      Date.tomorrow.strftime("%e %b")..(Date.tomorrow + 30.days).strftime("%e %b")
+    elsif current_reservation.nil?
+      # Caso 2: Apenas uma reserva futura → Disponível até o check-in da próxima reserva
+      Date.tomorrow.strftime("%e %b")..(next_reservation.checkin_date).strftime("%e %b")
+    elsif next_reservation.nil?
+      # Caso 3: Apenas uma reserva atual → Disponível após o check-out da reserva atual
+      (current_reservation.checkout_date).strftime("%e %b")..(Date.tomorrow + 30.days).strftime("%e %b")
+    else
+      # Caso 4: Existem tanto uma reserva atual quanto uma futura
+      (current_reservation.checkout_date).strftime("%e %b")..(next_reservation.checkin_date).strftime("%e %b")
+    end
+  end
 end
