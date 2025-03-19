@@ -1,5 +1,7 @@
 class Amenity < ApplicationRecord
-  validates :name, presence: :true
+  validates :name, presence: true, uniqueness: true
 
   has_one_attached :icon
+
+  has_many :property_amenities, dependent: :destroy
 end

@@ -9,21 +9,35 @@ description = <<-DESCRIPTION
 <p>No distrito do centro histórico, você pode respirar uma atmosfera feita por pessoas simples e hospitaleiras, artesanato antigo, lojas, tradições milenares e ritos cristãos que dão emoções de uma "jornada real" à descoberta que vai além das belezas do mar.</p>
 DESCRIPTION
 
-amenity1 = Amenity.create!(name: 'Kitchen')
-amenity1.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "kitchen.svg")), filename: amenity1.name, content_type: "svg")
+# amenity1 = Amenity.create!(name: 'Kitchen')
+# amenity1.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "kitchen.svg")), filename: amenity1.name, content_type: "svg")
 
-amenity2 = Amenity.create!(name: 'Private pool')
-amenity2.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "private_pool.svg")), filename: amenity2.name, content_type: "svg")
+# amenity2 = Amenity.create!(name: 'Private pool')
+# amenity2.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "private_pool.svg")), filename: amenity2.name, content_type: "svg")
 
-amenity3 = Amenity.create!(name: 'Wifi')
-amenity3.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "wifi.svg")), filename: amenity3.name, content_type: "svg")
+# amenity3 = Amenity.create!(name: 'Wifi')
+# amenity3.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "wifi.svg")), filename: amenity3.name, content_type: "svg")
 
-amenity4 = Amenity.create!(name: 'Essentials', description: "Toalhas, lençóis, sabonete e papel higiênico")
-amenity4.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "essentials.svg")), filename: amenity4.name, content_type: "svg")
+# amenity4 = Amenity.create!(name: 'Essentials', description: "Toalhas, lençóis, sabonete e papel higiênico")
+# amenity4.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "essentials.svg")), filename: amenity4.name, content_type: "svg")
+
+amenities_data = [
+  { name: 'Kitchen', icon: "kitchen.svg" },
+  { name: 'Private pool', icon: "private_pool.svg" },
+  { name: 'Wifi', icon: "wifi.svg" },
+  { name: 'Balcony', icon: "balcony.svg" },
+  { name: 'Garden', icon: "garden.svg" },
+  { name: 'Essentials', icon: "essentials.svg", description: "Toalhas, lençóis, sabonete e papel higiênico" }
+]
+
+amenities_data.each do |data|
+  amenity = Amenity.create!(name: data[:name], description: data[:description])
+  amenity.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "#{data[:icon]}")), filename: amenity.name, content_type: "svg")
+end
 
 pictures = []
 20.times do
-  pictures << URI.open(Faker::LoremFlickr.image)
+  pictures << URI.open('https://picsum.photos/700')
 end
 
 user = User.create!({
@@ -75,6 +89,10 @@ end
   property.images.attach(io: File.open(Rails.root.join("db", "images", "property_#{3}.jpg")), filename: "property_#{3}.jpg", content_type: "image/jpeg")
   property.images.attach(io: File.open(Rails.root.join("db", "images", "property_#{4}.jpg")), filename: "property_#{4}.jpg", content_type: "image/jpeg")
   property.images.attach(io: File.open(Rails.root.join("db", "images", "property_#{5}.jpg")), filename: "property_#{5}.jpg", content_type: "image/jpeg")
+
+  amenity_sample  = Amenity.all.sample(rand(1..(amenities_data.length() - 1))).uniq
+  property.amenities << amenity_sample
+
 
   (rand(5..10)).times do
     Review.create!({

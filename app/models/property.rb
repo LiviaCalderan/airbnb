@@ -12,6 +12,9 @@ class Property < ApplicationRecord
 
   has_many_attached :images
 
+  has_many :property_amenities, dependent: :destroy
+  has_many :amenities, through: :property_amenities, source: :amenity, dependent: :destroy
+
   has_many :reviews, dependent: :destroy
 
   has_many :wishlists, dependent: :destroy
