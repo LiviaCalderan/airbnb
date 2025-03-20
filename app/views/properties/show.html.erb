@@ -132,8 +132,24 @@
 
       <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
         
+        <!-- Host -->
+        <div class="border-t border-gray-200 pt-5 mt-4">
+          <h3 class="sr-only">Amenities</h3>
+
+          <div class="space-y-6">
+            
+            <div class="flex items-center mb-2 sm:flex-row ">
+                  <img src="https://static.vecteezy.com/ti/vetor-gratis/p1/512576-icone-preto-do-glyph-do-perfil-gratis-vetor.jpg" class= "w-12 h-12 me-4 rounded-full">
+                  <div class="font-medium dark:text-white text-lg tracking-tight flex flex-col gap-x-0">
+                      <p>Anfitriã(o): Walther</p>
+                      <p class="block text-sm sm text-gray-700 dark:text-gray-400 font-normal">10 anos hospedando</p>
+                  </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Description and details -->
-        <div class="border-t border-gray-200 pt-10 mt-4">
+        <div class="border-t border-gray-200 pt-10 pb-10 mt-4">
           <h3 class="sr-only">Description</h3>
 
           <div class="space-y-6">
@@ -146,6 +162,9 @@
             <% end %>
           </div>
         </div>
+
+        <!-- Amenities -->
+        <%= render :partial => 'properties/amenities', :locals => {:amenities => @property.amenities} %>
       </div>
     </div>
 

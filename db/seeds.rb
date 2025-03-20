@@ -22,17 +22,49 @@ DESCRIPTION
 # amenity4.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "essentials.svg")), filename: amenity4.name, content_type: "svg")
 
 amenities_data = [
-  { name: 'Kitchen', icon: "kitchen.svg" },
-  { name: 'Private pool', icon: "private_pool.svg" },
-  { name: 'Wifi', icon: "wifi.svg" },
-  { name: 'Balcony', icon: "balcony.svg" },
-  { name: 'Garden', icon: "garden.svg" },
-  { name: 'Essentials', icon: "essentials.svg", description: "Toalhas, lençóis, sabonete e papel higiênico" }
+  { name: "Ar-condicionado", icon: "air_conditioning.svg" },
+  { name: "Sacada", icon: "balcony.svg" },
+  { name: "Roupa de cama", icon: "bed_linen.svg" },
+  { name: "Jogos de tabuleiro", icon: "board_games.svg" },
+  { name: "Alarme de monóxido de carbono", icon: "carbon_monoxide_alarm.svg" },
+  { name: "Cafeteira", icon: "coffee_maker.svg" },
+  { name: "Fogão", icon: "cooker.svg" },
+  { name: "Itens básicos", icon: "cooking_basics.svg", description: "Vasilhas, panelas, óleo, sal e pimenta" },
+  { name: "Berço", icon: "cot.svg" },
+  { name: "Espaço de trabalho dedicado", icon: "dedicated_workspace.svg" },
+  { name: "Mesa de jantar", icon: "dining_table.svg" },
+  { name: "Louças e talheres", icon: "dishes_and_cutlery.svg", description: "Tigelas, hashi, pratos, copos, etc." },
+  { name: "Lava-louças", icon: "dishwasher.svg" },
+  { name: "Secadora", icon: "dryer.svg" },
+  { name: "Essenciais", icon: "essentials.svg", description: "Toalhas, lençóis, sabonete e papel higiênico" },
+  { name: "Extintor de incêndio", icon: "fire_extinguisher.svg" },
+  { name: "Kit de primeiros socorros", icon: "first_aid_kit.svg" },
+  { name: "Estacionamento gratuito", icon: "free_parking.svg" },
+  { name: "Geladeira", icon: "fridge.svg" },
+  { name: "Jardim", icon: "garden.svg", description: "Um espaço aberto da propriedade, geralmente coberto de grama" },
+  { name: "Secador de cabelo", icon: "hair_dryer.svg" },
+  { name: "Cabides", icon: "hangers.svg" },
+  { name: "Aquecimento", icon: "heating.svg" },
+  { name: "Hidromassagem", icon: "hot_tub.svg" },
+  { name: "Água quente", icon: "hot_water.svg" },
+  { name: "Ferro de passar", icon: "iron.svg" },
+  { name: "Cozinha", icon: "kitchen.svg", description: "Espaço onde os hóspedes podem preparar suas próprias refeições" },
+  { name: "Cofre", icon: "lockbox.svg" },
+  { name: "Micro-ondas", icon: "microwave.svg" },
+  { name: "Vista para a montanha", icon: "mountain_view.svg" },
+  { name: "Forno", icon: "oven.svg" },
+  { name: "Mesa de sinuca", icon: "pool_table.svg" },
+  { name: "Entrada privativa", icon: "private_entrance.svg", description: "Entrada por outra rua ou prédio" },
+  { name: "Piscina privativa", icon: "private_pool.svg" },
+  { name: "Shampoo", icon: "shampoo.svg" },
+  { name: "Alarme de fumaça", icon: "smoke_alarm.svg" },
+  { name: "TV", icon: "tv.svg" },
+  { name: "Máquina de lavar", icon: "washing_machine.svg" },
+  { name: "Wi-Fi", icon: "wifi.svg" }
 ]
 
 amenities_data.each do |data|
-  amenity = Amenity.create!(name: data[:name], description: data[:description])
-  amenity.icon.attach(io: File.open(Rails.root.join("app", "assets", "images", "amenity_icons", "#{data[:icon]}")), filename: amenity.name, content_type: "svg")
+  amenity = Amenity.create!(name: data[:name], icon: data[:icon], description: data[:description])
 end
 
 pictures = []
@@ -90,7 +122,7 @@ end
   property.images.attach(io: File.open(Rails.root.join("db", "images", "property_#{4}.jpg")), filename: "property_#{4}.jpg", content_type: "image/jpeg")
   property.images.attach(io: File.open(Rails.root.join("db", "images", "property_#{5}.jpg")), filename: "property_#{5}.jpg", content_type: "image/jpeg")
 
-  amenity_sample  = Amenity.all.sample(rand(1..(amenities_data.length() - 1))).uniq
+  amenity_sample  = Amenity.all.sample(rand(10..(amenities_data.length() - 1))).uniq
   property.amenities << amenity_sample
 
 
