@@ -1,14 +1,14 @@
 # Airbnb Clone | Ruby, Rails, HTML, CSS, JavaScript, TailwindCSS and Postgresql
 
-Este é um projeto de um clone do Airbnb desenvolvido utilizando Ruby on Rails. O objetivo é criar uma plataforma funcional para listagem e reserva de acomodações, utilizando tecnologias modernas para o frontend e backend.
+This is a project of an Airbnb clone developed using Ruby on Rails. The goal is to create a functional platform for listing and booking accommodations, using modern technologies for both frontend and backend.
 
-## Tecnologias Utilizadas: 
+## Technologies Used:
 
  - **Backend**: Ruby on Rails
- - **Frontend**: HTML, CSS e JavaScript, TailwindCSS
- - **Banco de Dados**: PostgreSQL
+ - **Frontend**: HTML, CSS and JavaScript, TailwindCSS
+ - **Database**: PostgreSQL
 
- ## Versão
+ ## Version
 
  - Ruby: 3.4.1
  - Rails: 8.0.1
